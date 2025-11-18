@@ -7,6 +7,8 @@ import './css/custom.scss'
 import { RouterProvider } from 'react-router'
 import { router } from './routes.ts'
 
+//TODO: Undo noUnusuedLocals and noUnusuedParameters to fix TS6133
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <RouterProvider router={router}/>
