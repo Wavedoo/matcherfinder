@@ -1,7 +1,8 @@
 import { Navbar, Nav, Container, Form, /* Button */ } from "react-bootstrap"
-
+import { useAuthenticator } from "@aws-amplify/ui-react"
 
 export default function MatcherNavbar(){
+    const { authStatus, signOut } = useAuthenticator(context => [context.authStatus]);
     return <Navbar expand="lg" variant="dark" className="bg-dark">
         <Container fluid>
             <Navbar.Brand href="/">
@@ -24,7 +25,10 @@ export default function MatcherNavbar(){
                     <Nav.Link href="/upload">Upload</Nav.Link>
                 </Nav>
                 <Nav className="ms-auto">
-                    <Nav.Link href="/login">Log in</Nav.Link>
+                    {
+                        authStatus !== 'authenticated' ? <Nav.Link href="/login">Log in</Nav.Link> : <button onClick={signOut}>Sign out</button>
+                    }
+                    
                 </Nav>
             </Navbar.Collapse>
         </Container>

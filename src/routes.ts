@@ -7,6 +7,7 @@ import Signup from "./pages/Signup";
 import Details from "./pages/Details";
 import TerribleHome from "./pages/TerribleHome";
 import Upload from "./pages/Upload";
+import AmplifyLogin from "./pages/amplify-ui/AmplifyLogin";
 
 export const router = createBrowserRouter([
     { 
@@ -14,7 +15,7 @@ export const router = createBrowserRouter([
         Component: Root,
         children: [
             {index: true, Component: TerribleHome},
-            {path: "/login", Component: Login},
+            {path: "/login", Component: AmplifyLogin},
             {path: "/register", Component: Signup},
             {path: "/matching", Component: Details},
             {path: "/upload", Component: Upload}
