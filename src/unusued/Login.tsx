@@ -7,7 +7,7 @@ export default function Login(){
             {/* "border border-2 border-dark py-2 px-5 my-3 justify-content-center rounded-3 */}
             { }
             
-            <Container className="border border-2 border-dark py-2 px-5 my-3 justify-content-center rounded-3" style={{maxWidth: "600px"}}>
+            <Container className="border-dark py-2 px-5 my-3 justify-content-center rounded-3" style={{maxWidth: "600px"}}>
                 {/* or type=email */}
                 <MatcherFormGroup controlId="username" label="Username" type="text"/>
                 <a href="#" className="mx-auto d-block w-50 text-center">Forgot username?</a>
