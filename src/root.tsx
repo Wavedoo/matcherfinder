@@ -13,8 +13,6 @@ import outputs from "../amplify_outputs.json"
 
 
 import './css/main.css'
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import './css/custom.scss'
 import '@aws-amplify/ui-react/styles.css';
 
 Amplify.configure(outputs)

@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import { Form } from "react-bootstrap";
 import useLog from "../hooks/useLog";
 
 interface ControlProps {
-    controlId: string,
+    id: string,
     label: string,
     /** Size limit in mb **/ 
     sizeLimit?: number
-    lengthLimit?: number
+    lengthLimit?: number,
+    required?: boolean
 }
 
-export default function ImageFileInput({ controlId, label, sizeLimit = 10, lengthLimit = 4000 }: ControlProps){
+export default function ImageFileInput({ id, label, sizeLimit = 10, lengthLimit = 4000, required = false }: ControlProps){
     const [file, setFile] = useState<File | null>(null);
     const [error, setError] = useState<string | null>(null);
     const maxSize = sizeLimit  * 1000;
@@ -34,15 +34,26 @@ export default function ImageFileInput({ controlId, label, sizeLimit = 10, lengt
     }
     useLog("File is: " + file);
     return (
-        <Form.Group className="my-3" controlId={controlId}>
-            <Form.Label>{label}</Form.Label>
-            {/* or type=email */}
-            <Form.Control 
-                type="file" 
+        // TODO: Better styling
+        <div className="my-3">
+            <label htmlFor={id}>{label}</label>
+            <input 
+                className="border-2 w-full rounded-md file:p-1 file:bg-blue-300 file:border file:rounded-md"
+                type="file"
                 accept="image/gif, image/jpeg, image/png"
                 onChange={onFileChange}
-                required
+                required = {required}
             />
-        </Form.Group>
+        </div>
+        // <Form.Group className="my-3" controlId={controlId}>
+        //     <Form.Label>{label}</Form.Label>
+        //     {/* or type=email */}
+        //     <Form.Control 
+        //         type="file" 
+        //         accept="image/gif, image/jpeg, image/png"
+        //         onChange={onFileChange}
+        //         required
+        //     />
+        // </Form.Group>
     )
 }

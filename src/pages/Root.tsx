@@ -1,6 +1,5 @@
 import { Outlet } from "react-router";
-import MatcherNavbar from "../components/MatcherNavbar";
-import Navbar from "../components/tailwind/Navbar";
+import Navbar from "../components/Navbar";
 
 export default function Root(){
     return <>

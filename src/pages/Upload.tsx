@@ -1,11 +1,10 @@
-import { Button, Container, Form } from "react-bootstrap";
 // import MatcherFormGroup from "../components/MatcherFormControl";
-import Pictures from "../components/tailwind/Pictures";
+import Pictures from "../components/Pictures";
 import { useNavigate } from "react-router";
 import { useAuthenticator } from "@aws-amplify/ui-react";
-import ImageFileInput from "../components/tailwind/ImageFileInput";
+import ImageFileInput from "../components/ImageFileInput";
 import useLog from "../hooks/useLog";
-import Textbox from "../components/tailwind/Textbox";
+import Textbox from "../components/Textbox";
 
 export default function Upload(){
     const navigate = useNavigate();
@@ -15,7 +14,7 @@ export default function Upload(){
     // if(authStatus !== 'authenticated'){
     //     navigate("/login")
     // }
-    return <Form className="border-2 border-dark py-2 px-5 m-3 justify-content-center rounded-3">
+    return <form className="border-2 border-dark py-2 px-5 m-3 justify-content-center rounded-3">
             {/* <MatcherFormGroup controlId={"title"} label={"Title"} type={"text"} required/> */}
             <Textbox id={"title"} label={"Title"} required />
             <ImageFileInput id={"left"} label={"Left picture"} />
@@ -27,6 +26,6 @@ export default function Upload(){
             {/* <MatcherFormGroup controlId={"description"} label={"Description"} type={"text"} required/> */}
             {/* TODO: Sources list */}
             {/* TODO: Custom tag element */}
-            <Button type="submit" className="my-3 bg-blue-300 border rounded-sm p-2 hover:bg-blue-400">Upload</Button>
-    </Form>
+        <button type="submit" className="my-3 bg-blue-300 border rounded-sm p-2 hover:bg-blue-400">Upload</button>
+    </form>
 }

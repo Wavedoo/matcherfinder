@@ -1,7 +1,6 @@
-import { Col, Row, Stack } from "react-bootstrap"
 import Picture from "./Picture"
 
-interface PicturesProps{
+interface PicturesProps {
     left: string,
     right: string,
     leftAlt: string,
@@ -11,14 +10,14 @@ interface PicturesProps{
 }
 
 // How to add clickable Boolean
-export default function Pictures({left, right, leftAlt, rightAlt, link, clickable}: PicturesProps){
-    const stack = 
-        <Stack direction="horizontal" gap={1} className="w-50">
-            <Picture src={left} alt={leftAlt}></Picture>
-            <Picture src={right} alt={rightAlt}></Picture>
-        </Stack>
+export default function Pictures({ left, right, leftAlt, rightAlt, link, clickable }: PicturesProps) {
+    const images = <div className="grid grid-rows-1 grid-cols-2 gap-1 w-fit">
+        <Picture src={left} alt={leftAlt}/>
+        <Picture src={right} alt={rightAlt}/>
+    </div>
 
-    return clickable ? <a href={link}>{stack}</a> : stack
+
+    return clickable ? <a href={link}>{images}</a> : images
 }
 
 /* // How to add clickable Boolean
