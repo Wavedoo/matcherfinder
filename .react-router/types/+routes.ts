@@ -17,9 +17,6 @@ type Pages = {
   "/login": {
     params: {};
   };
-  "/register": {
-    params: {};
-  };
   "/matching": {
     params: {};
   };
@@ -31,11 +28,11 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/login" | "/register" | "/matching" | "/upload";
+    page: "/" | "/login" | "/matching" | "/upload";
   };
   "./pages/Root.tsx": {
     id: "pages/Root";
-    page: "/" | "/login" | "/register" | "/matching" | "/upload";
+    page: "/" | "/login" | "/matching" | "/upload";
   };
   "./pages/TerribleHome.tsx": {
     id: "pages/TerribleHome";
@@ -44,10 +41,6 @@ type RouteFiles = {
   "./pages/amplify-ui/AmplifyLogin.tsx": {
     id: "pages/amplify-ui/AmplifyLogin";
     page: "/login";
-  };
-  "./pages/Signup.tsx": {
-    id: "pages/Signup";
-    page: "/register";
   };
   "./pages/Details.tsx": {
     id: "pages/Details";
@@ -64,7 +57,6 @@ type RouteModules = {
   "pages/Root": typeof import("./src/./pages/Root.tsx");
   "pages/TerribleHome": typeof import("./src/./pages/TerribleHome.tsx");
   "pages/amplify-ui/AmplifyLogin": typeof import("./src/./pages/amplify-ui/AmplifyLogin.tsx");
-  "pages/Signup": typeof import("./src/./pages/Signup.tsx");
   "pages/Details": typeof import("./src/./pages/Details.tsx");
   "pages/Upload": typeof import("./src/./pages/Upload.tsx");
 };

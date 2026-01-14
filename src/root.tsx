@@ -8,11 +8,16 @@ import {
     Scripts,
     ScrollRestoration,
 } from "react-router";
+import { Amplify } from 'aws-amplify';
+import outputs from "../amplify_outputs.json"
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './css/custom.scss'
+
+import './css/main.css'
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import './css/custom.scss'
 import '@aws-amplify/ui-react/styles.css';
 
+Amplify.configure(outputs)
 
 export function Layout({
     children,
@@ -43,7 +48,7 @@ export function Layout({
 export default function Root() {
     return (
         <StrictMode>
-            <Authenticator.Provider>
+            <Authenticator.Provider> 
                 <Outlet/>
             </Authenticator.Provider>
         </StrictMode>

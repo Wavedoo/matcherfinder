@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+@property --standard-width {
+    initial-value: 1536px;
+}
+
+button {
+    cursor: pointer;
+}
