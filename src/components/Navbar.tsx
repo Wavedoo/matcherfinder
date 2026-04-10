@@ -2,6 +2,8 @@ import { useAuthenticator } from "@aws-amplify/ui-react"
 import { useState } from "react";
 import { NavLink } from "react-router";
 import { Bars3Icon } from "@heroicons/react/24/outline"
+import ProfileIcon from "./IconButton";
+import UserModal from "./UserModal";
 
 
 function NavLinkClassNames(isActive: boolean) {
@@ -20,22 +22,28 @@ function MenuClassNames(dropdown: boolean) {
 export default function Navbar(){
     const { authStatus, signOut } = useAuthenticator(context => [context.authStatus]);
     const [dropdown, setDropdown] = useState<boolean>(false);
+    const [modalDropDown, setModalDropdown] = useState<boolean>(false);
     const shoot = () => {
         alert("Great Shot!");
     }
 
-    return (
+    return <>
         <nav className="relative bg-gray-800">
             {/* Width limiter. 1536px because of 2xl breakpoint. */}
             {/* I kinda like the nabar without the restraints of a width */}
             {/* idk why there is a space even with p-0 figure it out. See if i want it gone. */}
             <div className="mx-auto max-w-(--standard-width) px-2 sm:px-6">
                 {/* Contents area */}
-                <div className="flex h-16 mx-auto my-auto items-center justify-between">
+                <div className="flex h-16 mx-auto my-auto items-center justify-between text-white">
                 {/* <div className="flex-1 mx-auto my-auto max-w-7xl px-6"> */}
 
                     {/* Computer div */}
-                    <div className="flex flex-auto items-center sm:justify-start text-white space-x-4">
+                    <div className="flex items-center sm:justify-start  space-x-4">
+                        <button className={`hover:bg-gray-700 p-2 rounded-lg sm:hidden ${dropdown && 'bg-gray-700'}`} onClick={() => setDropdown(!dropdown)}>
+                            <Bars3Icon className="size-6 text-white">
+                                {/* add tailwind.config.js max-w-mine o r something 153466367326320 px */}
+                            </Bars3Icon>
+                        </button>
                         {/* Logo subsitute */}
                         <NavLink to="/" className="font-bold">
                             Matcherfinder
@@ -47,28 +55,30 @@ export default function Navbar(){
                             <NavLink to="/upload" className={({isActive}) => NavLinkClassNames(isActive)}
                             >Upload</NavLink>
                             {/* TODO: Put a search bar */}
-                            {
-                                authStatus !== 'authenticated' ?
-                                    (<NavLink to="/login" className={({ isActive }) => NavLinkClassNames(isActive)}>Login</NavLink>) : 
-                                    (<button onClick={signOut}>Sign out</button>)
-                            }
-                            
                         </div>
 
                     </div>
-                    <button className={`hover:bg-gray-700 p-2 rounded-lg sm:hidden ${dropdown && 'bg-gray-700'}`} onClick={() => setDropdown(!dropdown)}>
-                        <Bars3Icon className="size-6 text-white">
-                                {/* add tailwind.config.js max-w-mine o r something 153466367326320 px */}
-                        </Bars3Icon>
-
-                    </button>
-
+                    {/* Commented out while working on IconButton */}
+                    {/* {
+                        authStatus !== 'authenticated' ?
+                            (<NavLink to="/login" className={({ isActive }) => NavLinkClassNames(isActive)}>Login</NavLink>) :
+                            (<IconButton />)
+                    } */}
+                    {
+                        authStatus !== 'authenticated' ?
+                            (<NavLink to="/login" className={({ isActive }) => NavLinkClassNames(isActive)}>Login</NavLink>) :
+                            (<button className="hover:bg-gray-700 p-2 rounded-full" onClick={() => setModalDropdown(!modalDropDown)}>
+                                <ProfileIcon />
+                            </button>)
+                    }
+                    
+                    
                 </div>
             </div>
 
             {/* Hamburger menu stuff */}
             {/* TODO: add animations */}
-            <div className={`flex flex-col items-end sm:hidden bg-gray-850 text-white ${!dropdown && 'hidden'}`}>
+            <div className={`flex flex-col items-start sm:hidden bg-gray-850 text-white ${!dropdown && 'hidden'}`}>
                 <NavLink to="/" className={({ isActive }) => NavLinkClassNames(isActive)}
                 >Home</NavLink>
                 <NavLink to="/upload" className={({ isActive }) => NavLinkClassNames(isActive)}
@@ -81,6 +91,8 @@ export default function Navbar(){
                 }
 
             </div>
+            
         </nav>
-    )
+        {modalDropDown && <UserModal />}
+    </>
 }

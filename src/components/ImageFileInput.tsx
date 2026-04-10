@@ -11,8 +11,8 @@ interface ControlProps {
 }
 
 export default function ImageFileInput({ id, label, sizeLimit = 10, lengthLimit = 4000, required = false }: ControlProps){
-    const [file, setFile] = useState<File | null>(null);
-    const [error, setError] = useState<string | null>(null);
+    const [file, setFile] = useState<File | undefined | null>(null);
+    const [error, setError] = useState<string | null>('');
     const maxSize = sizeLimit  * 1000;
 
     const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,6 +31,7 @@ export default function ImageFileInput({ id, label, sizeLimit = 10, lengthLimit 
         }
 
         setFile(selectedFile)
+        console.log("Selected file is now: " + file);
     }
     useLog("File is: " + file);
     return (

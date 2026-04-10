@@ -17,7 +17,7 @@
     "@heroicons/react": "^2.2.0",
     "@react-router/node": "^7.10.1",
     "@tailwindcss/vite": "^4.1.17",
-    "aws-amplify": "^6.15.7",
+    "aws-amplify": "^6.16.2",
     "isbot": "^5",
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
