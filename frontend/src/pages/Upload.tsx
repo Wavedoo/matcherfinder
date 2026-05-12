@@ -9,7 +9,7 @@ import TagAdder from "../components/TagAdder";
 import { useEffect, useState, type SetStateAction } from "react";
 import NewImageFileInput from "../components/NewImageFileInput";
 import { generateClient } from 'aws-amplify/data'
-import type { Schema } from '../../amplify/data/resource'
+import type { Schema } from '../../../amplify/data/resource'
 import PreviewUpload from "../components/PreviewUpload";
 import DisplayImageFileInput from "../components/DisplayImageFileInput";
 import TextArea from "../components/Textarea";

@@ -1,5 +1,5 @@
-import Pictures from "../components/Pictures";
-import Tag from "../components/Tag"
+import Pictures from "./Pictures";
+import Tag from "./Tag"
 import { Link, NavLink } from "react-router";
 
 interface PreviewProps {

@@ -3,7 +3,7 @@ import left from "../images/left.jpg"
 import right from "../images/right.jpg"
 import useLog from "../hooks/useLog"
 // import type { Route } from "./+types/route-name";
-import type { Schema } from "../../amplify/data/resource";
+import type { Schema } from "../../../amplify/data/resource";
 import { generateClient } from "aws-amplify/data";
 import { useEffect, useState } from "react";
 

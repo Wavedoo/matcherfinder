@@ -2,10 +2,10 @@
 
 import type { GetInfo, GetAnnotations } from "react-router/internal";
 
-type Module = typeof import("../Details.js")
+type Module = typeof import("../Upload.js")
 
 type Info = GetInfo<{
-  file: "./pages/Details.tsx",
+  file: "./pages/Upload.tsx",
   module: Module
 }>
 
@@ -16,11 +16,11 @@ type Matches = [{
   id: "pages/Root";
   module: typeof import("../Root.js");
 }, {
-  id: "pages/Details";
-  module: typeof import("../Details.js");
+  id: "pages/Upload";
+  module: typeof import("../Upload.js");
 }];
 
-type Annotations = GetAnnotations<Info & { module: Module, matches: Matches }, false>;
+type Annotations = GetAnnotations<Info & { module: Module, matches: Matches }>;
 
 export namespace Route {
   // links
@@ -57,9 +57,18 @@ export namespace Route {
   // HydrateFallback
   export type HydrateFallbackProps = Annotations["HydrateFallbackProps"];
 
+  // ServerHydrateFallback
+  export type ServerHydrateFallbackProps = Annotations["ServerHydrateFallbackProps"];
+
   // Component
   export type ComponentProps = Annotations["ComponentProps"];
 
+  // ServerComponent
+  export type ServerComponentProps = Annotations["ServerComponentProps"];
+
   // ErrorBoundary
   export type ErrorBoundaryProps = Annotations["ErrorBoundaryProps"];
+
+  // ServerErrorBoundary
+  export type ServerErrorBoundaryProps = Annotations["ServerErrorBoundaryProps"];
 }
