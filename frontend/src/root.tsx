@@ -9,13 +9,13 @@ import {
     ScrollRestoration,
 } from "react-router";
 import { Amplify } from 'aws-amplify';
-// import outputs from "../amplify_outputs.json"
+import outputs from "../amplify_outputs.json"
 
 
 import './css/main.css'
 import '@aws-amplify/ui-react/styles.css';
 
-Amplify.configure({})
+Amplify.configure(outputs)
 
 export function Layout({
     children,
